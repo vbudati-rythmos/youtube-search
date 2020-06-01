@@ -11,33 +11,42 @@
                 </div>
             </div>
             <div style="float: right;margin-top: -28px;">
-                <span class="glyphicon glyphicon-filter" ></span>
+                <span class="glyphicon glyphicon-filter"></span>
                 <select class="browser-default custom-select" (change)="filter($event)">
                     <option disabled>filter</option>
                     <option value="video">video</option>
                     <option value="playlist">playlist</option>
-                  </select>
+                </select>
             </div>
-            
+
         </div>
         <div class="panel-body">
             <div class="list-group">
                 <div *ngFor="let result of searchResults && searchResults.items" class="list-group-item">
-                    <img src="{{result.snippet.thumbnails.default.url}}">
-                    <div class="caption">
-                        <h4>{{result.snippet.title}}</h4>
-                        <p>{{result.snippet.description}}</p>
-                        <p><a href="https://www.youtube.com/watch?v={{result.id.videoId}}" class="btn btn-default"
-                                role="button" style="background-color: red; color: white;">
-                                Watch</a>
-                        </p>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="{{result.snippet.thumbnails.default.url}}">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="caption">
+                                <h4>{{result.snippet.title}}</h4>
+                                <p>{{result.snippet.description}}</p>
+                                <p><a href="https://www.youtube.com/watch?v={{result.id.videoId}}"
+                                        class="btn btn-default" role="button" target="_blank"
+                                        style="background-color: red; color: white;">
+                                        Watch</a>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="panel-footer" style="margin-bottom: 25px;">
-            <button *ngIf="searchResults && searchResults.nextPageToken" style="float: right;" (click)="pagination('next')">Next Page</button>
-            <button *ngIf="searchResults && searchResults.prevPageToken" style="float: left;" (click)="pagination('previous')">Previous Page</button>
+            <button *ngIf="searchResults && searchResults.nextPageToken" style="float: right;"
+                (click)="pagination('next')">Next Page</button>
+            <button *ngIf="searchResults && searchResults.prevPageToken" style="float: left;"
+                (click)="pagination('previous')">Previous Page</button>
         </div>
     </div>
 </div>

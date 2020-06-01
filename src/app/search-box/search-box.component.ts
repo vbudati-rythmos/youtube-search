@@ -32,11 +32,8 @@ export class SearchBoxComponent implements OnInit {
     this.search();
   }
   async search() {
-    console.log(this.payload);
     let result = await this.youtubeService.search(this.payload).toPromise();
     this.searchResults = result;
-
-    console.log(this.searchResults);
   }
 
 }
